@@ -1,4 +1,36 @@
 <x-layout>
   <x-slot:title>{{ $title }}</x-slot:title>
-  <h3 class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolores perferendis quod esse quos eligendi incidunt omnis alias? Accusamus placeat praesentium deleniti optio? Voluptatem nostrum esse, consequatur aliquid ipsam dolores!</h3>
+
+  {{-- py-8 : vertical padding (margin top & bottom) --}}
+  {{-- max-w-screen-md : 768px --}}
+  {{-- border-b : border bottom --}}
+  {{-- border-gray-300 : border color yg warna gray --}}
+
+  <article class="py-8 max-w-screen-md border-b border-gray-300">
+
+    {{-- mb-1 : margin bottom 1px --}}
+    {{-- text-3xl : font size 3xl (30px) --}}
+    {{-- tracking-tight : letter spacing --}}
+    {{-- text-gray-900 : text color, 900 itu weight nya --}}
+    {{-- font-bold : font weight --}}
+
+    <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">Judul article 1</h2>
+    <div class="text-base text-gray-500"><a href="#">Zweena Ariva</a> | 2 September 2025</div>
+    <p class="my-4 font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus repudiandae debitis libero veritatis, modi voluptates ipsum obcaecati perspiciatis! Nisi a cupiditate ut culpa qui id ratione consequuntur praesentium, dicta veniam?</p>
+    <a href="#" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
+  </article>
+
+  <article class="py-8 max-w-screen-md border-b border-gray-300">
+
+    {{-- mb-1 : margin bottom 1px --}}
+    {{-- text-3xl : font size 3xl (30px) --}}
+    {{-- tracking-tight : letter spacing --}}
+    {{-- text-gray-900 : text color, 900 itu weight nya --}}
+    {{-- font-bold : font weight --}}
+
+    <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">Judul article 2</h2>
+    <div class="text-base text-gray-500"><a href="#">Zweena Ariva</a> | 2 August 2025</div>
+    <p class="my-4 font-light">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam architecto sapiente accusamus quidem perspiciatis dolore velit ab saepe commodi delectus, laudantium doloribus qui, veritatis nobis, optio ipsum exercitationem corrupti! Ad?</p>
+    <a href="#" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
+  </article>
 </x-layout>
