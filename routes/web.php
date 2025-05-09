@@ -20,8 +20,8 @@ Route::get('/posts', function () {
 
 // {id} : parameter rute yang diteruskan ke fungsi closure sebagai $id
 
-Route::get('/posts/{slug}', function($slug){
-    $post = Post::find($slug);
+Route::get('/posts/{post:slug}', function(Post $post) {
+    // $post = Post::find($id);
 
     //single post : buat ngubah judul halaman
     return view('post', ['title' => 'Single post', 'post' => $post]);
