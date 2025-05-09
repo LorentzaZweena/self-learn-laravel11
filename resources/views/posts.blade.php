@@ -20,7 +20,9 @@
 
       {{-- title : dari array posts yang di route --}}
       <a href="/posts/{{ $blog['slug'] }}" class="hover:underline"><h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $blog['title'] }}</h2></a>
-      <div class="text-base text-gray-500"><a href="#">{{ $blog['author'] }}</a> | 2 September 2025</div>
+      {{-- <div class="text-base text-gray-500"><a href="#">{{ $blog['author'] }}</a> | {{ $blog->created_at->format('j F Y') }}</div> kalo mau nampilin tanggal bulan tahun --}}
+
+      <div class="text-base text-gray-500"><a href="#">{{ $blog['author'] }}</a> | {{ $blog->created_at->diffForHumans() }}</div>
       
       {{-- str::limit() = untuk memotong text --}}
       <p class="my-4 font-light">{{ Str::limit($blog['body']), 100 }}</p>

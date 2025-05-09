@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Support\Arr;
-use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model {
-    // protected $table = 'blog_posts'; jika nama tabel tidak sesuai dengan default laravel
-    //protected $primaryKey = 'posts_id'; jika primary key tidak sesuai dengan default laravel
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Post extends Model
+{
+    use HasFactory;
+    protected $fillable = ['title', 'author', 'slug', 'body'];
 }
