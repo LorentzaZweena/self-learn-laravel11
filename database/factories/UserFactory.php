@@ -27,6 +27,9 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            //$a = $a ? $a : $b; ternary operator
+            //$a = $a ?: $b; elvis operator
+            //$a ??= $b; null coalescing operator
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
@@ -41,4 +44,12 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    //kalo mau bikin admin user
+    // public function admin(): static
+    // {
+    //     return $this->state(fn (array $attributes) => [
+    //         'is_admin' => true,
+    //     ]);
+    // }
 }
