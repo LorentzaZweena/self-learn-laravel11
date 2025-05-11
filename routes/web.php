@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,13 @@ Route::get('/posts/{post:slug}', function(Post $post) {
 
     //single post : buat ngubah judul halaman
     return view('post', ['title' => 'Single post', 'post' => $post]);
+});
+
+Route::get('/authors/{user}', function(User $user) {
+    // $post = Post::find($id);
+
+    //single post : buat ngubah judul halaman
+    return view('posts', ['title' => 'Articles by ' . $user->name, 'posts' => $user->posts]);
 });
 
 Route::get('/contact', function () {
