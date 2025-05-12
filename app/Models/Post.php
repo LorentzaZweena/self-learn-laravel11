@@ -16,4 +16,10 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    //untuk relasi ke category, satu post dimiliki oleh satu category
+    public function category() : BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

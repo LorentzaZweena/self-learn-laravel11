@@ -24,14 +24,17 @@
       </a>
       {{-- <div class="text-base text-gray-500"><a href="#">{{ $blog['author'] }}</a> | {{ $blog->created_at->format('j F Y') }}</div> kalo mau nampilin tanggal bulan tahun --}}
 
-      <div class="text-base text-gray-500">
-        <a href="/authors/{{ $blog->author->id }}" class="hover:underline">{{ $blog->author->name }}</a> 
+      <div>
+        By
+        <a href="/authors/{{ $blog->author->username }}" class="hover:underline text-base text-gray-500">{{ $blog->author->name }}</a> 
+        in
+        <a href="/categories/{{ $blog->category->slug }}" class="hover:underline text-base text-gray-500">{{ $blog->category->name }}</a>
         | {{ $blog->created_at->diffForHumans() }}
       </div>
       
       {{-- str::limit() = untuk memotong text --}}
       <p class="my-4 font-light">{{ Str::limit($blog['body']), 100 }}</p>
-      <a href="/posts/{{ $blog['slug'] }}" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
+      <a href="/posts/{{ $blog['slug'] }}" class="font-medium text-blue-500 hover:underline text-base text-gray-500">Read more &raquo;</a>
     </article>
   @endforeach
 
