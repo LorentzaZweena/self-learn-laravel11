@@ -15,9 +15,13 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog', 'posts' => 
-        Post::all()
-    ]);
+    // ditaro divariable $posts dulu untuk mengambil semua data dari model Post
+    // latest() untuk mengambil data terbaru
+    // get() untuk mengambil semua data
+    // with() untuk mengambil relasi dari model Post
+    // $posts = Post::with(['author', 'category'])->latest()->get();
+    $posts = Post::latest()->get();
+    return view('posts', ['title' => 'Blog', 'posts' => $posts]);
 });
 
 // {id} : parameter rute yang diteruskan ke fungsi closure sebagai $id
@@ -30,18 +34,16 @@ Route::get('/posts/{post:slug}', function(Post $post) {
 });
 
 Route::get('/authors/{user:username}', function(User $user) {
-    // $post = Post::find($id);
-
-    //single post : buat ngubah judul halaman
+    // $posts = $user->posts->load('category', 'author');
     return view('posts', ['title' => count($user->posts) . ' Articles by ' . $user->name, 'posts' => $user->posts]);
 });
 
-Route::get('/categories/{category:slug}', function(Category $category) {
-    // $post = Post::find($id);
 
-    //single post : buat ngubah judul halaman
+Route::get('/categories/{category:slug}', function(Category $category) {
+    // $posts = $category->posts->load('category', 'author');
     return view('posts', ['title' =>'Articles in ' . $category->name, 'posts' => $category->posts]);
 });
+
 
 Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact']);

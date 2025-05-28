@@ -11,6 +11,10 @@ class Post extends Model
     use HasFactory;
     protected $fillable = ['title', 'author', 'slug', 'body'];
 
+    //untuk eager loading relasi author dan category
+    //jadi ketika kita mengambil data post, data author dan category juga ikut diambil
+    protected $with = ['author', 'category'];
+
     //untuk relasi ke user, satu post dimiliki oleh satu user
     public function author() : BelongsTo
     {
