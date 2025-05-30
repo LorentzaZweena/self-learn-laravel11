@@ -4,32 +4,52 @@
   {{-- $posts = dari route
   $blog = variable yang aku buat sendiri --}}
 
-    {{-- py-8 : vertical padding (margin top & bottom) --}}
-    {{-- max-w-screen-md : 768px --}}
-    {{-- border-b : border bottom --}}
-    {{-- border-gray-300 : border color yg warna gray --}}
+  <div class="min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="px-6 py-8 sm:px-8">
+          <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            {{ $post['title'] }}
+          </h1>
+          
+          <div class="flex flex-wrap items-center text-sm text-gray-600 mb-6 gap-2">
+            <span>By</span>
+            <a href="/authors/{{ $post->author->username }}" 
+               class="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+              {{ $post->author->name }}
+            </a>
+            <span class="text-gray-400">•</span>
+            <span>in</span>
+            <a href="/categories/{{ $post->category->slug }}" 
+               class="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+              {{ $post->category->name }}
+            </a>
+            <span class="text-gray-400">•</span>
+            <time class="text-gray-500">{{ $post->created_at->diffForHumans() }}</time>
+          </div>
 
-    <article class="py-8 max-w-screen-md">
+          <div class="border-t border-gray-200 mb-6"></div>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-700 leading-relaxed text-lg">
+              {{ $post['body'] }}
+            </p>
+          </div>
+        </div>
 
-      {{-- mb-1 : margin bottom 1px --}}
-      {{-- text-3xl : font size 3xl (30px) --}}
-      {{-- tracking-tight : letter spacing --}}
-      {{-- text-gray-900 : text color, 900 itu weight nya --}}
-      {{-- font-bold : font weight --}}
-
-      {{-- title : dari array posts yang di route --}}
-      <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $post['title'] }}</h2>
-      <div>
-        By
-        <a href="/authors/{{ $post->author->username }}" class="hover:underline text-base text-gray-500">{{ $post->author->name }}</a> 
-        in
-        <a href="/categories/{{ $post->category->slug }}" class="hover:underline text-base text-gray-500">{{ $post->category->name }}</a>
-        | {{ $post->created_at->diffForHumans() }}
-      </div>
-      
-      {{-- str::limit() = untuk memotong text --}}
-      <p class="my-4 font-light">{{ $post['body']}}</p>
-      <a href="/posts" class="font-medium text-blue-500 hover:underline">&laquo; Back</a>
-    </article>
+        <div class="px-6 py-4 sm:px-8 bg-gray-50 border-t border-gray-200">
+          <a href="/posts" 
+             class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors group">
+            <svg class="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" 
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back to Posts
+          </a>
+        </div>
+        
+      </article>
+    </div>
+  </div>
 
 </x-layout>
