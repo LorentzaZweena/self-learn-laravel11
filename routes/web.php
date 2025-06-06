@@ -20,8 +20,16 @@ Route::get('/posts', function () {
     // get() untuk mengambil semua data
     // with() untuk mengambil relasi dari model Post
     // $posts = Post::with(['author', 'category'])->latest()->get();
-    $posts = Post::latest()->get();
-    return view('posts', ['title' => 'Blog', 'posts' => $posts]);
+
+    //dump(request('search')); untuk menampilkan data yang dikirim melalui query string
+    // dump(request('search'));
+
+    // $posts = Post::latest();
+    // if(request('search')){
+            // filter data berdasarkan query string 'search'
+    //     $posts->where('title', 'like', '%' . request('search') . '%');
+    // }
+    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
 });
 
 // {id} : parameter rute yang diteruskan ke fungsi closure sebagai $id

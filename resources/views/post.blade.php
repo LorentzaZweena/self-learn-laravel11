@@ -1,9 +1,6 @@
 <x-layout>
   <x-slot:title>{{ $title }}</x-slot:title>
 
-  {{-- $posts = dari route
-  $blog = variable yang aku buat sendiri --}}
-
   <div class="min-h-screen py-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <article class="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -14,13 +11,13 @@
           
           <div class="flex flex-wrap items-center text-sm text-gray-600 mb-6 gap-2">
             <span>By</span>
-            <a href="/authors/{{ $post->author->username }}" 
+            <a href="/posts?author={{ $post->author->username }}" 
                class="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors">
               {{ $post->author->name }}
             </a>
             <span class="text-gray-400">•</span>
             <span>in</span>
-            <a href="/categories/{{ $post->category->slug }}" 
+            <a href="/posts?category={{ $post->category->slug }}" 
                class="font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors">
               {{ $post->category->name }}
             </a>
