@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        User::factory(20)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
 
         //buat manggil seeder user dan category
         $this->call(CategorySeeder::class, UserSeeder::class);
-        Post::factory(10)->recycle([
+        Post::factory(20)->recycle([
             Category::all(),
             User::all()
         ])->create();

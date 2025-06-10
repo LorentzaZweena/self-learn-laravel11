@@ -28,6 +28,9 @@
   {{-- $posts = dari route
   $blog = variable yang aku buat sendiri --}}
 
+  {{ $posts->links() }}
+  {{-- pagination --}}
+
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-0 lg:mx-0 lg:max-w-none md:grid-cols-2 lg:grid-cols-3">
     @forelse ($posts as $blog)
@@ -65,7 +68,7 @@
           </div>
         </div>
       </article>
-      {{-- jika tidak ditemukan, maka tampilin ini --}}
+      {{-- jika tidak ditemukanz, maka tampilin ini --}}
       @empty
       <div>
         <p class="font-semibold text-xl my-4">Article not found!</p>

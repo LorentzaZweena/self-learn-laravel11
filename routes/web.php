@@ -29,7 +29,7 @@ Route::get('/posts', function () {
             // filter data berdasarkan query string 'search'
     //     $posts->where('title', 'like', '%' . request('search') . '%');
     // }
-    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
+    return view('posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(6)->withQueryString()]);
 });
 
 // {id} : parameter rute yang diteruskan ke fungsi closure sebagai $id
